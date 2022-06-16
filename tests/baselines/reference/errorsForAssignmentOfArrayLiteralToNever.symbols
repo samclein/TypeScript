@@ -1,0 +1,25 @@
+=== tests/cases/compiler/errorsForAssignmentOfArrayLiteralToNever.ts ===
+let y: never;
+>y : Symbol(y, Decl(errorsForAssignmentOfArrayLiteralToNever.ts, 0, 3))
+
+y = [1, 2, 3];
+>y : Symbol(y, Decl(errorsForAssignmentOfArrayLiteralToNever.ts, 0, 3))
+
+y = [1, '2', 3];
+>y : Symbol(y, Decl(errorsForAssignmentOfArrayLiteralToNever.ts, 0, 3))
+
+y = {x: '1'};
+>y : Symbol(y, Decl(errorsForAssignmentOfArrayLiteralToNever.ts, 0, 3))
+>x : Symbol(x, Decl(errorsForAssignmentOfArrayLiteralToNever.ts, 6, 5))
+
+declare function nv(x: never): void;
+>nv : Symbol(nv, Decl(errorsForAssignmentOfArrayLiteralToNever.ts, 6, 13))
+>x : Symbol(x, Decl(errorsForAssignmentOfArrayLiteralToNever.ts, 8, 20))
+
+nv([1, 2, 3]);
+>nv : Symbol(nv, Decl(errorsForAssignmentOfArrayLiteralToNever.ts, 6, 13))
+
+nv({ x: 1 });
+>nv : Symbol(nv, Decl(errorsForAssignmentOfArrayLiteralToNever.ts, 6, 13))
+>x : Symbol(x, Decl(errorsForAssignmentOfArrayLiteralToNever.ts, 12, 4))
+

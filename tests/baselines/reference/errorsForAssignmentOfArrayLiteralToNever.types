@@ -1,0 +1,46 @@
+=== tests/cases/compiler/errorsForAssignmentOfArrayLiteralToNever.ts ===
+let y: never;
+>y : never
+
+y = [1, 2, 3];
+>y = [1, 2, 3] : number[]
+>y : never
+>[1, 2, 3] : number[]
+>1 : 1
+>2 : 2
+>3 : 3
+
+y = [1, '2', 3];
+>y = [1, '2', 3] : (string | number)[]
+>y : never
+>[1, '2', 3] : (string | number)[]
+>1 : 1
+>'2' : "2"
+>3 : 3
+
+y = {x: '1'};
+>y = {x: '1'} : { x: string; }
+>y : never
+>{x: '1'} : { x: string; }
+>x : string
+>'1' : "1"
+
+declare function nv(x: never): void;
+>nv : (x: never) => void
+>x : never
+
+nv([1, 2, 3]);
+>nv([1, 2, 3]) : void
+>nv : (x: never) => void
+>[1, 2, 3] : number[]
+>1 : 1
+>2 : 2
+>3 : 3
+
+nv({ x: 1 });
+>nv({ x: 1 }) : void
+>nv : (x: never) => void
+>{ x: 1 } : { x: number; }
+>x : number
+>1 : 1
+
